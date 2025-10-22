@@ -1,11 +1,9 @@
-using OneOf;
-
 namespace ASLSK.Lib.Counters;
 
-public enum PersonelMarkerSide
+[Option("GoodOrder")]
+[Option("Broken")]
+public partial class PersonelMarkerSide
 {
-    GoodOrder,
-    Broken
 }
 
 public interface IPersonelMarker
@@ -23,8 +21,8 @@ public class PersonelMarker : OneOfBase<SingleManCounter, MultiManCounter>, IPer
     {
     }
 
-    public static implicit operator PersonelMarker(SingleManCounter singleManCounter) => new PersonelMarker(singleManCounter);
-    public static implicit operator PersonelMarker(MultiManCounter multiManCounter) => new PersonelMarker(multiManCounter);
+    public static implicit operator PersonelMarker(SingleManCounter singleManCounter) => new(singleManCounter);
+    public static implicit operator PersonelMarker(MultiManCounter multiManCounter) => new(multiManCounter);
 
     public int GoodOrderMorale => Match(
         singleMan => singleMan.GoodOrderMorale,

@@ -1,19 +1,19 @@
 namespace ASLSK.Lib.Counters;
 
-public enum MultiManCounterType
+[Option("Squad")]
+[Option("HalfSquad")]
+[Option("Crew")]
+public partial class MultiManCounterType
 {
-    Squad,
-    HalfSquad,
-    Crew
 }
 
-public enum MultiManCounterClass
+[Option("Elite")]
+[Option("FirstLine")]
+[Option("SecondLine")]
+[Option("Green")]
+[Option("Conscript")]
+public partial class MultiManCounterClass
 {
-    Elite,
-    FirstLine,
-    SecondLine,
-    Green,
-    Conscript
 }
 
 public record MultiManCounter
@@ -23,6 +23,7 @@ public record MultiManCounter
     bool AssaultFire,
     int? SmokeExponent,
     int NormalRange,
+    MultiManCounterClass Class,
     PersonelMarkerSide FaceUpSide,
     int GoodOrderMorale,
     bool ExperienceLevelRatingNotApplicable,
