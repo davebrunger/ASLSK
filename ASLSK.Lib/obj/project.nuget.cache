@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "yIJG0rYbW8E=",
+  "success": true,
+  "projectFilePath": "/Users/davidbrunger/VSCode Projects/ASLSK/ASLSK.Lib/ASLSK.Lib.csproj",
+  "expectedPackageFiles": [
+    "/Users/davidbrunger/.nuget/packages/oneof/3.0.271/oneof.3.0.271.nupkg.sha512"
+  ],
+  "logs": []
+}
