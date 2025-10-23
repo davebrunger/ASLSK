@@ -11,21 +11,11 @@ public partial class InfantryFireTableResult
         Option.Some(infantryFireTableResult);
 }
 
-public class InvalidFirepower : Exception
-{
-    public int Firepower { get; }
-
-    public InvalidFirepower(int firepower) : base($"Invalid Firepower: {firepower}") 
-    {
-        Firepower = firepower;
-    }
-}
-
 public static class InfantryFireTable
 {
-    public static Result<Option<InfantryFireTableResult>, InvalidFirepower> GetResult(int firepower, int modifiedDiceRoll)
+    public static Option<InfantryFireTableResult> GetResult(PositiveInteger firepower, int modifiedDiceRoll)
     {
-        return firepower switch
+        return firepower.Value switch
         {
             >= 36 => GetFirepower36Result(modifiedDiceRoll),
             >= 30 => GetFirepower30Result(modifiedDiceRoll),
@@ -37,8 +27,7 @@ public static class InfantryFireTable
             >= 6 => GetFirepower6Result(modifiedDiceRoll),
             >= 4 => GetFirepower4Result(modifiedDiceRoll),
             >= 2 => GetFirepower2Result(modifiedDiceRoll),
-            1 => GetFirepower1Result(modifiedDiceRoll),
-            _ => new InvalidFirepower(firepower)
+            _ => GetFirepower1Result(modifiedDiceRoll)
         };
     }
 
